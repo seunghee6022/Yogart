@@ -45,7 +45,7 @@
 
                 <span class="go-term">약관 보기</span>
 
-                <button class="btn">
+                <button class="btn" @click="submit">
                     <span>
                         작성완료
                     </span>
@@ -61,15 +61,39 @@
 
 <script>
     import '../../assets/css/user.scss'
+    import api from '@/api'
 
     export default {
         components: {
         },
         created(){
 
-
         },
         methods: {
+            submit() {
+                console.log('회원가입합니다.')
+
+                const {nickName, email, password, passwordConfirm } = this
+                if (!nickName || !email || !password || !passwordConfirm) {
+                    alert('모든 항목을 입력해주세요!')
+
+                }
+                if (password !== passwordConfirm) {
+                    alert('비밀번호가 일치하지 않습니다!')
+                    return               
+               }
+               api.post('auth/join', {nickName, email, password})
+               .then(res=> {
+                   alert('회원가입이 완료되었습니다.')
+                   this.$router.push('/')
+               })
+               .catch(err=> {
+                   alert(err.response.data.msg)
+               })
+                
+                
+               
+            }
         },
         watch: {
         },
