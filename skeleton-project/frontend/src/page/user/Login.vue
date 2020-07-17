@@ -3,6 +3,7 @@
         <div class="wrapC table">
             <div class="middle">
                 <h1>SS_log</h1>
+                <!-- <form @submit.prevent="onSubmit(email, password)"> -->
                 <div class="input-wrap">
                     <input v-model="email"
                         id="email" 
@@ -26,6 +27,7 @@
                     </div>
 
                 </div>
+                <!-- </form> -->
             </div>
             
         </div>
@@ -45,12 +47,29 @@
         watch: {
         },
         methods: {
+            onSubmit(email, password) {
+                this.$stord.dispatch('LOGIN',{email, password})
+                .then(()=> this.redirect())
+                .catch(({message})=> this.msg = message)
+            },
+            redirect() {
+                const {search} = window.location
+                const tokens = search.replace('/^\/','').split('&')
+                const {returnPath} = tokens.reduce((qs,tkn) =>{
+                    const pair = tkn.split('=')
+                    qs[pair[0]] = decodeURIComponent(pair[1])
+                    return qs
+                },{})
+
+                this.$router.push(returnPath)
+            }
         },
         data: () => {
             return {
                 constants,
                 email: '',
                 password: '',
+                msg:''
 
             }
         }

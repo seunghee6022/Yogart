@@ -1,11 +1,14 @@
 <template>
     <div class="user" id="join"> 
         <div class="wrapC table">
+        <form class="form-wrap">
             <div class="middle">
                 <h1>회원가입</h1>
-                <div class="form-wrap">
+                <!-- <div class="form-wrap"> -->
+                 
                     <div class="input-wrap">
-                        <input v-model="nickName"
+            
+                        <input v-model="nickname"
                             id="nickname"
                             placeholder="닉네임을 입력해주세요" type="text"/>
                     </div>
@@ -50,7 +53,8 @@
                         작성완료
                     </span>
                 </button>
-            </div>
+            </form>
+            <!-- </div> -->
 
 
         </div> 
@@ -61,7 +65,8 @@
 
 <script>
     import '../../assets/css/user.scss'
-    import api from '@/api'
+    import axios from 'axios'
+    
 
     export default {
         components: {
@@ -73,8 +78,8 @@
             submit() {
                 console.log('회원가입합니다.')
 
-                const {nickName, email, password, passwordConfirm } = this
-                if (!nickName || !email || !password || !passwordConfirm) {
+                const {nickname, email, password, passwordConfirm } = this
+                if (!nickname || !email || !password || !passwordConfirm) {
                     alert('모든 항목을 입력해주세요!')
 
                 }
@@ -82,9 +87,16 @@
                     alert('비밀번호가 일치하지 않습니다!')
                     return               
                }
-               api.post('auth/join', {nickName, email, password})
+               let formdata = new formData();
+               formdata.append("nickname", this.nickname,"email", this.email, "password",this.password);
+
+               axios.post('https://localhost:8080/account/signup', formdata)
+            //    axios.post('https://localhost:8080/account/signup', {nickname, email, password})
+               
+               
                .then(res=> {
-                   alert('회원가입이 완료되었습니다.')
+                   console.log(res)
+                   alert(res,'회원가입이 완료되었습니다.')
                    this.$router.push('/')
                })
                .catch(err=> {
@@ -100,12 +112,13 @@
         data: () => {
             return {
                 email: '',
-                nickName: '',
+                nickname: '',
                 password: '',
                 passwordConfirm: '',
                 isTerm: false,
                 passwordType:"password",
                 passwordConfirmType:"password",
+                
             }
         }
 
