@@ -8,20 +8,20 @@
                  
                     <div class="input-wrap">
             
-                        <input v-model="nickname"
+                        <input v-model="this.formdata.nickname"
                             id="nickname"
                             placeholder="닉네임을 입력해주세요" type="text"/>
                     </div>
 
                     <div class="input-wrap">
-                        <input v-model="email" 
+                        <input v-model="this.formdata.email" 
                             id="email"
                             placeholder="이메일을 입력해주세요"
                             type="text"/>
                     </div>
 
                     <div class="input-wrap password-wrap">
-                        <input v-model="password"
+                        <input v-model="this.formdata.password"
                             id="password" 
                             :type="passwordType"
                             placeholder="비밀번호를 입력해주세요"/>
@@ -31,7 +31,7 @@
                     </div>
 
                     <div class="input-wrap password-wrap">
-                        <input v-model="passwordConfirm" 
+                        <input v-model="this.formdata.passwordConfirm" 
                             id="password-confirm"
                             :type="passwordConfirmType"
                             placeholder="비밀번호를 한번 더 입력해주세요"/>
@@ -75,33 +75,43 @@
 
         },
         methods: {
+            checkTerm() {
+                this.formdata.isTerm = !this.formdata.isTerm
+            },
             submit() {
                 console.log('회원가입합니다.')
 
-                const {nickname, email, password, passwordConfirm } = this
-                if (!nickname || !email || !password || !passwordConfirm) {
+                // const {nickname, email, password, passwordConfirm } = this.formdata
+                // console.log(this.formdata)
+                // console.log(this.nickname,this.email,this.password,this.passwordConfirm)
+
+                if (!this.formdata.nickname || !this.formdata.email || !this.formdata.password || !this.formdata.passwordConfirm) {
+                    if (!this.formdata.nickname) {console.log('nickname을 입력해주세요')}
+                    else if (!this.formdata.email) {console.log('email을 입력해주세요')}
+                    else if (!this.formdata.password) {console.log('password을 입력해주세요')}
+                    else {console.log('passwordConfirm을 입력해주세요')}
                     alert('모든 항목을 입력해주세요!')
 
                 }
-                if (password !== passwordConfirm) {
+                if (this.formdata.password !== this.formdata.passwordConfirm) {
                     alert('비밀번호가 일치하지 않습니다!')
                     return               
                }
-               let formdata = new formData();
-               formdata.append("nickname", this.nickname,"email", this.email, "password",this.password);
-
-               axios.post('https://localhost:8080/account/signup', formdata)
-            //    axios.post('https://localhost:8080/account/signup', {nickname, email, password})
-               
-               
-               .then(res=> {
-                   console.log(res)
-                   alert(res,'회원가입이 완료되었습니다.')
-                   this.$router.push('/')
-               })
-               .catch(err=> {
-                   alert(err.response.data.msg)
-               })
+            //    let formdata = new formData();
+            //    formdata.append("nickname", this.nickname,"email", this.email, "password",this.password);
+                
+                axios.post('https://localhost:8080/account/signup', this.formdata)
+                
+                
+                
+                .then(res=> {
+                    console.log(res)
+                    alert(res,'회원가입이 완료되었습니다.')
+                    this.$router.push('/')
+                })
+                .catch(err=> {
+                    alert(err.response.data.msg)
+                })
                 
                 
                
@@ -111,11 +121,13 @@
         },
         data: () => {
             return {
+               formdata : {
                 email: '',
                 nickname: '',
                 password: '',
                 passwordConfirm: '',
                 isTerm: false,
+            },
                 passwordType:"password",
                 passwordConfirmType:"password",
                 
