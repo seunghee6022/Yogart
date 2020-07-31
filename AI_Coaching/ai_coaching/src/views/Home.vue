@@ -1,11 +1,9 @@
 <template>
   <div class="home">
 
-    <Loading v-if="initSuccess"/>
-    <AI v-if="initSuccess" @send-initSuccess="initSuccess"/>
-    <p>{{initSuccess}}</p>
-    
-    
+    <Loading />
+    <AI/>
+  
 
   </div>
 </template>
@@ -23,11 +21,7 @@ export default {
     Loading,
    
   },
-  props: {
-    initSuccess : Boolean,
-  }
+  
 }
-
-    
 
 </script>
