@@ -2,12 +2,13 @@
   <div> 
       <div id="AI"  v-if="!loading">
             <h1>AI Coaching Service</h1>
-            <button v-if="startBtn" class="w3-btn w3-round-xlarge w3-red w3-xlarge m-5" type="button" @click="init">Get Start!</button>
+           <h5>{{current+1}}번째 동작 :{{yogaPostures[current]}}</h5>
+            <button v-if="startBtn" class="w3-btn w3-round-xlarge w3-red w3-xlarge m-5" type="button" @click="init()">Get Start!</button>
              </div>
        
        <div id="loading" v-if="loading">
            <h3 class="m-5">AI 요가 코칭 서비스를 시작합니다</h3>
-
+             <p>{{current+1}}번째 동작 :{{yogaPostures[current]}}</p>
            <!-- <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
           <span class="sr-only">Loading...</span> -->
           
@@ -20,13 +21,12 @@
             <h3 class="m-5">웹캠을 켜주시고 잠시만 기다려 주세요</h3>
             <p> AI Yoga Coaching Service is running, Please turn on your webcam and wait</p>
 
-
         </div>
        <div v-if="aiPage" class="m-1">
-           <p>AI 코칭을 경험해 보세요</p>
+           <!-- <p>AI 코칭을 경험해 보세요</p> -->
            <button v-if="!startBtn" class="w3-button w3-teal" type="button" @click="restart">Restart</button>
             <button v-if="!startBtn" class="w3-button w3-black" type="button" @click="stop">End</button>
-      
+            <button @click="next" class="w3-btn w3-round-xlarge w3-red w3-large m-5" type="button">Next Yoga Posture</button>
         </div>
         <div><canvas id="canvas"></canvas></div>
         <div id="label-container"></div>
@@ -36,11 +36,11 @@
 <script>
     import '@tensorflow/tfjs'
     import * as tmPose from "@teachablemachine/pose"
-    const URL = "../my_model/";
+    
     let model, webcam, ctx, labelContainer, maxPredictions;
-    console.log(URL)
+   
     export default {
-        name : 'AI',
+        name : 'Yoga1',
         data() {
             return{
                 startBtn : true,
@@ -50,47 +50,18 @@
                 startTime : true,
                 endTime : true,
                 requestId : undefined,
+                yogaPostures : ['Yoga1','Yoga2','Yoga3'],
+                current : 0,
             }
         },
-        async created() {
-            
-        },
-        async mounted() {
-     
-            // // load the model and metadata
-            // // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
-            // // Note: the pose library adds a tmPose object to your window (window.tmPose)
-            // model = await tmPose.load(modelURL, metadataURL);
-            // console.log("model",model)
-            // maxPredictions = model.getTotalClasses();
-            // console.log("this.prediction",this.prediction)
-            // this.prediction = maxPredictions
-            // console.log("maxPredictions",maxPredictions)
-            // console.log("this.prediction",this.prediction)
-    
-            // // Convenience function to setup a webcam
-            // //여기 웹캠 사이즈
-            // const width = 200;
-            // const height = 200;
-            // const flip = true; // whether to flip the webcam
-            // webcam = new tmPose.Webcam(width, height, flip); // width, height, flip
-            // await webcam.setup(); // request access to the webcam
-            // await webcam.play();
-            // // this 붙여줘야!!!!!!!!!!!
-            // window.requestAnimationFrame(this.loop);
-    
-            // // append/get elements to the DOM
-            // const canvas = document.getElementById("canvas");
-            // canvas.width = width; 
-            // canvas.height = height;
-            // ctx = canvas.getContext("2d");
-            // labelContainer = document.getElementById("label-container");
-            // for (let i = 0; i < maxPredictions; i++) { // and class labels
-            //     labelContainer.appendChild(document.createElement("div"));
-            //     }
-            
-            },
+      
         methods:{
+            next() {
+                this.current++;
+                console.log("current : ",this.current)
+                console.log("다음동작",this.yogaPostures[this.current],"을 실행합니다.")
+                this.init(this.yogaPostures[this.current])
+            },
             stop() {
                 console.log("click stop btn",this.requestId)
                 if (this.requestId) {
@@ -108,13 +79,15 @@
             },
 
             async init() {
+
+                console.log(this.yogaPostures[this.current])
                 this.startBtn = false;
                
                 console.log("click the start btn")
                 // 로딩이 시작
                 this.loading = true;
 
-                
+                const URL = `../YogaPostures/${this.yogaPostures[this.current]}/`;
                 const modelURL = URL + "model.json";
                 const metadataURL = URL + "metadata.json";
     
