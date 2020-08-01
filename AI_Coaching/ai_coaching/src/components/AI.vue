@@ -1,18 +1,32 @@
 <template>
   <div> 
       <div id="AI"  v-if="!loading">
-            <div>Teachable Machine Pose Model</div>
-            <button v-if="startBtn" type="button" @click="init">Start</button>
-            <button v-if="!startBtn" type="button" @click="restart">Restart</button>
-            <button type="button" @click="stop">End</button>
-       </div>
+            <h1>AI Coaching Service</h1>
+            <button v-if="startBtn" class="w3-btn w3-round-xlarge w3-red w3-xlarge m-5" type="button" @click="init">Get Start!</button>
+             </div>
        
        <div id="loading" v-if="loading">
-           <h1>Loading</h1>
+           <h3 class="m-5">AI 요가 코칭 서비스를 시작합니다</h3>
+
+           <!-- <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+          <span class="sr-only">Loading...</span> -->
+          
+          <i class="fa fa-spinner fa-pulse fa-5x fa-fw m-5"></i>
+      `   <span class="sr-only">Loading...</span>
+      
+            <!-- <i class="fa fa-refresh fa-spin fa-3x fa-fw" aria-hidden="true"></i>
+            <span class="sr-only">Refreshing...</span> -->
+
+            <h3 class="m-5">웹캠을 켜주시고 잠시만 기다려 주세요</h3>
+            <p> AI Yoga Coaching Service is running, Please turn on your webcam and wait</p>
+
+
         </div>
-       <div v-if="aiPage">
-            <h1>AI</h1>
+       <div v-if="aiPage" class="m-1">
            <p>AI 코칭을 경험해 보세요</p>
+           <button v-if="!startBtn" class="w3-button w3-teal" type="button" @click="restart">Restart</button>
+            <button v-if="!startBtn" class="w3-button w3-black" type="button" @click="stop">End</button>
+      
         </div>
         <div><canvas id="canvas"></canvas></div>
         <div id="label-container"></div>
@@ -122,8 +136,8 @@
         
                 // Convenience function to setup a webcam
                 //여기 웹캠 사이즈
-                const width = 200;
-                const height = 200;
+                const width = 400;
+                const height = 400;
                 const flip = true; // whether to flip the webcam
                 webcam = new tmPose.Webcam(width, height, flip); // width, height, flip
                 await webcam.setup(); // request access to the webcam
