@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
+  <div class="AICoachingPage">
 
-    <Loading />
+    <!-- <Loading /> -->
     <AI/>
   
 
@@ -11,14 +11,14 @@
 <script>
 // @ is an alias to /src
 import AI from '@/components/AI.vue'
-import Loading from '@/components/Loading.vue'
+// import Loading from '@/components/Loading.vue'
 
 
 export default {
-  name: 'Home',
+  name: 'AICoachingPage',
   components: {
     AI,
-    Loading,
+    // Loading,
    
   },
   
