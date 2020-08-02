@@ -50,7 +50,7 @@
                 startTime : true,
                 endTime : true,
                 requestId : undefined,
-                yogaPostures : ['Yoga1','Yoga2','Yoga3'],
+                yogaPostures : ['Yoga1','Yoga2','EasyPose'],
                 current : 0,
             }
         },
