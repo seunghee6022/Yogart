@@ -25,7 +25,7 @@
        <div v-if="aiPage" class="m-1">
            <!-- <p>AI 코칭을 경험해 보세요</p> -->
            <button v-if="!startBtn" class="w3-button w3-teal" type="button" @click="restart">Restart</button>
-            <button v-if="!startBtn" class="w3-button w3-black" type="button" @click="stop">End</button>
+            <button v-if="!startBtn" class="w3-button w3-black" type="button" @click="stop">Stop</button>
             <button @click="next" class="w3-btn w3-round-xlarge w3-red w3-large m-5" type="button">Next Yoga Posture</button>
         </div>
         <div><canvas id="canvas"></canvas></div>
@@ -179,41 +179,7 @@
                 }
             }
         }
-        //     async  loop(timestamp) {
-        //     webcam.update(); // update the webcam frame
-        //     await predict();
-        //     window.requestAnimationFrame(loop);
-        //     },
-    
-        //     async  predict() {
-        //         // Prediction #1: run input through posenet
-        //         // estimatePose can take in an image, video or canvas html element
-        //         const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
-        //         // Prediction 2: run input through teachable machine classification model
-        //         const prediction = await model.predict(posenetOutput);
-        
-        //         for (let i = 0; i < maxPredictions; i++) {
-        //             const classPrediction =
-        //                 prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-        //             labelContainer.childNodes[i].innerHTML = classPrediction;
-        //         }
-        
-        //         // finally draw the poses
-        //         drawPose(pose);
-        //     },
-        
-        //     drawPose(pose) {
-        //         if (webcam.canvas) {
-        //             ctx.drawImage(webcam.canvas, 0, 0);
-        //             // draw the keypoints and skeleton
-        //             if (pose) {
-        //                 const minPartConfidence = 0.5;
-        //                 tmPose.drawKeypoints(pose.keypoints, minPartConfidence, ctx);
-        //                 tmPose.drawSkeleton(pose.keypoints, minPartConfidence, ctx);
-        //             }
-        //         }
-        //     }
-        // }
+ 
     }
 </script>
     
