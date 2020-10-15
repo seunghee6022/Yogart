@@ -10,13 +10,37 @@
 
 
 
-  <p align="center">
+  <h5 align="center">
     AI 기반 요가 자세 코칭 및 1:1 요가 수업 매칭 플랫폼
     <br />
     <br />
     <a href="imgForREADME/frame.pdf"><strong>와이어 프레임 초안</strong></a>
     · 
-    <a href="https://docs.google.com/document/d/1mni5wXHhc3lFoP_9c4rojFkBvvPv2uf-ai3y7hOMw-I/edit"><strong>프로젝트 계획서</strong></a></p>
+    <a href="https://docs.google.com/document/d/1mni5wXHhc3lFoP_9c4rojFkBvvPv2uf-ai3y7hOMw-I/edit"><strong>프로젝트 계획서</strong></a></h5>
+
+
+
+
+
+<h4 align="center">
+    AI Yoga coaching service & 1:1 video class between yoga teacher and student by web RTC</h4>
+<h6>1. AI Yoga Coaching Service</h6>
+<ul>
+	<li>Yogart recommendation yoga courses </li>
+    <li>User can create custom yoga courses </li>
+    <li>Analyzing your exercise data as well as history with graphs on my page</li>
+</ul>
+
+
+<h6>2. 1:1 Video Classes Between Yoga Teacher And Student</h6>
+<ul>
+	<li>Yoga teacher can register on yogart website with their teaching license </li>
+    <li>Yoga teacher can create and manage classes on my page </li>
+    <li>Students can choose and pay classes with kakao pay</li>
+</ul>
+
+
+
 
 
 > > 메인 페이지
