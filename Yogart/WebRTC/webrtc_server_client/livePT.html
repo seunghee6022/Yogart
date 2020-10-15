@@ -1,0 +1,84 @@
+<html style="overflow: hidden; height: 100%;">
+
+<head>
+    <meta charset="utf-8" />
+    <title>LIVE PT-YOGART</title>
+
+    <style>
+    div {
+        margin: 0px;
+    }
+    #btn {
+        cursor: pointer;
+    }
+    #mbtn:hover {
+        cursor: pointer;
+        color: crimson !important;
+    }
+    #vbtn:hover {
+        cursor: pointer;
+        color: crimson !important;
+    }
+    </style>
+    <!-- font-awesome -->
+    <script src="https://kit.fontawesome.com/8531e3adef.js" crossorigin="anonymous"></script>
+</head>
+<body style="overflow: hidden; height: 100%; margin: 0px;">
+    <div style="position: absolute; z-index: 2;">
+        <video id="localVideo" width="300px" autoplay muted></video>
+    </div>
+    <div style="position: absolute; z-index: 1; width: 100%; height: 100%;">
+        <video id="remoteVideo" width="100%" autoplay style="object-fit:fill;"></video>
+    </div>
+    <div style="position: absolute; z-index: 99; width: 100%; height:100%; justify-content: center;">
+        <div id="vBtn" onclick="vidMute()" style="position: absolute; top: 90%; left: 45%; font-size: 30px; color: #8fa0f2;">
+            <i id="videoBtn" class="fas fa-video"></i>
+        </div><br>
+        <div id="mBtn" onclick="audMute()" style="position: absolute; top: 90%; left: 53%; font-size: 30px; color: #8fa0f2;">
+            <i id="micBtn" class="fas fa-microphone"></i>
+        </div><br>
+    </div>
+    <script>
+        let vidCnt = 0
+        let micCnt = 0
+        const videoBtn = document.querySelector('#videoBtn')
+        const vBtn = document.querySelector('#vBtn')
+        const micBtn = document.querySelector('#micBtn')
+        const mBtn = document.querySelector('#mBtn')
+        videoBtn.addEventListener('click', function(e) {
+            vidCnt++
+            if (vidCnt > 1) {
+                const hasClass = videoBtn.classList.contains('fa-video')
+                if (hasClass) {
+                    videoBtn.classList.remove('fa-video')
+                    videoBtn.classList.add('fa-video-slash')
+                    vBtn.style.color = '#f29d8f'
+                } else {
+                    videoBtn.classList.remove('fa-video-slash')
+                    videoBtn.classList.add('fa-video')
+                    vBtn.style.color = '#8fa0f2'
+                }
+            }
+        })
+        micBtn.addEventListener('click', function(e) {
+            micCnt++
+            if (micCnt > 1) {
+                const hasClass = micBtn.classList.contains('fa-microphone')
+                if (hasClass) {
+                    micBtn.classList.remove('fa-microphone')
+                    micBtn.classList.add('fa-microphone-slash')
+                    mBtn.style.color = '#f29d8f'
+                } else {
+                    micBtn.classList.remove('fa-microphone-slash')
+                    micBtn.classList.add('fa-microphone')
+                    mBtn.style.color = '#8fa0f2'
+                }
+            }
+        })
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js"></script>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="./rtc.js"></script>
+</body>
+
+</html>
