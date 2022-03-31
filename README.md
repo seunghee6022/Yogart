@@ -21,7 +21,7 @@
 
 
 
-## Introduction of the project (Eng ver.)
+### Introduction of the project (Eng ver.)
 <h4 align="center">
     AI Yoga coaching service & 1:1 video class between yoga teacher and student by web RTC</h4>
     Project Yogat is an AI-based yoga training service. The witty name reminiscent of yogurt is meant to be a fresh and healthy service just like yogurt. Overall, there are two main services, AI yoga training and analysis service based on AI(teachable machines), and yoga pt with instructors through real-time video lectures. 
@@ -41,15 +41,11 @@
 </ul>
 
 
-
-
-
-> > 메인 페이지 (Main page)
+> > <h6>메인 페이지 (Main page)</h6>
 <p align="center">
 <img src="imgForREADME/main1.PNG">
     <img src="imgForREADME/main2.PNG">
 </p>
-
 
 
 
