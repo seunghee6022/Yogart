@@ -24,6 +24,7 @@
 
 <h4 align="center">
     AI Yoga coaching service & 1:1 video class between yoga teacher and student by web RTC</h4>
+    Project Yogat is an AI-based yoga training service. The witty name reminiscent of yogurt is meant to be a fresh and healthy service just like yogurt.
 <h6>1. AI Yoga Coaching Service</h6>
 <ul>
 	<li>Yogart recommendation yoga courses </li>
