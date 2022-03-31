@@ -194,6 +194,6 @@ mvn spring-boot:run
   - 유상욱 - sizn08@naver.com 
   - 노우현 - ydav2295@gmail.com 
 
-
+(Only accessible for ssafy members)
 - Project Link: [https://lab.ssafy.com/s03-webmobile1-sub3/s03p13d202](https://lab.ssafy.com/s03-webmobile1-sub3/s03p13d202)
 
