@@ -44,7 +44,7 @@
 
 
 
-> > 메인 페이지
+> > 메인 페이지 (Main page)
 <p align="center">
 <img src="imgForREADME/main1.PNG">
     <img src="imgForREADME/main2.PNG">
@@ -53,7 +53,7 @@
 
 
 
-## :paperclip: 프로젝트 소개
+## :paperclip: 프로젝트 소개 (Introduction of the project)
 
 
 > > 기획 의도
@@ -106,7 +106,7 @@
 > >
 > > 
 
-### 사용언어
+### 사용언어 (Programming Languages)
 - JAVA
 - JavaScript
 - NodeJS
@@ -119,7 +119,7 @@
 
 
 
-### 프레임워크
+### 프레임워크 (Framework)
 - Spring Boot Framework
 - Vue.js
 - Swagger
@@ -137,7 +137,7 @@
 
 
 
-### 라이브러리 / API
+### 라이브러리 Library / API
 - Teachable Machine
 - WebRTC
 - ChartJS
@@ -158,19 +158,19 @@
 > >
 > > 
 
-### 소스코드 다운로드
+### 소스코드 다운로드 (Source code download)
 
 ```sh
 git clone https://lab.ssafy.com/s03-webmobile1-sub3/s03p13d202.git
 ```
-### 클라이언트 실행
+### 클라이언트 실행 (Run the Client)
 ```sh
 cd frontend/yogart/
 npm install
 npm run serve -- --port 3000
 ```
 
-### 서버 실행
+### 서버 실행 (Run the server)
 ```sh
 cd backend/yogart/
 apt-get install maven
