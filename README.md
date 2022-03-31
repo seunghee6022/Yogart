@@ -184,13 +184,13 @@ mvn spring-boot:run
 > >
 > > 
 
-### 삼성 청년 소프트웨어 아카데미(SSAFY) 3기 공통 프로젝트 - D202
+### Samsung Software Academy for Youth(SSAFY) 3기 공통 프로젝트 - D202
 
-- 프론트엔드 개발자
+- 프론트엔드 개발자 (Frontend web developer)
   - 조규성 - pandora_h@naver.com 
   - 박인영 - in0_2015@naver.com 
-  - 정승희 - seunghee6022@gmail.com 
-- 백엔드 개발자
+  - 정승희(Seunghee Jeong) - seunghee6022@gmail.com 
+- 백엔드 개발자 (Backend web developer)
   - 유상욱 - sizn08@naver.com 
   - 노우현 - ydav2295@gmail.com 
 
